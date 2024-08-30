@@ -1,5 +1,6 @@
 require 'custom.configs.options'
 require 'custom.configs.keymaps'
+require 'custom.configs.autocommands'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -90,7 +91,7 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
-      vim.keymap.set('n', '<leader>fc', function()
+      vim.keymap.set('n', '<leader>pc', function()
         require('telescope').extensions.flutter.commands()
       end)
 
@@ -180,18 +181,18 @@ require('lazy').setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
+        cssls = {},
+        html = {},
+        dockerls = {},
+        jdtls = {},
+        docker_compose_language_service = {},
+        gopls = {},
+        eslint = {},
+        vtsls = {},
+        intelephense = {},
+        prismals = {},
+        tailwindcss = {},
+        bashls = {},
 
         lua_ls = {
           settings = {
@@ -314,8 +315,8 @@ require('lazy').setup({
           ['<C-p>'] = cmp.mapping.select_prev_item(),
 
           -- Scroll the documentation window [b]ack / [f]orward
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-u>'] = cmp.mapping.scroll_docs(4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
@@ -343,6 +344,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'vim-dadbod-completion' },
         },
       }
     end,
@@ -397,7 +399,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
