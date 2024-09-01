@@ -67,8 +67,25 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'stevearc/dressing.nvim',
+      'dart-lang/dart-vim-plugin',
     },
-    config = true,
+    opts = {
+      widget_guides = {
+        enabled = true,
+      },
+      outline = {
+        open_cmd = '20vnew',
+      },
+      dev_log = {
+        enabled = false,
+      },
+      debugger = {
+        enabled = true,
+        register_configurations = function(_)
+          require('dap.ext.vscode').load_launchjs()
+        end,
+      },
+    },
   },
 
   {

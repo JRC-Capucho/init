@@ -186,13 +186,13 @@ require('lazy').setup({
         dockerls = {},
         jdtls = {},
         docker_compose_language_service = {},
-        gopls = {},
         eslint = {},
         vtsls = {},
         intelephense = {},
         prismals = {},
         tailwindcss = {},
         bashls = {},
+        gopls = {},
 
         lua_ls = {
           settings = {
@@ -272,6 +272,17 @@ require('lazy').setup({
     event = 'InsertEnter',
     dependencies = {
       {
+        'petertriho/cmp-git',
+        opts = {
+          filetypes = {
+            'gitcommit',
+            'octo',
+            'git_rebase',
+            'NeogitCommitMessage',
+          },
+        },
+      },
+      {
         'L3MON4D3/LuaSnip',
         build = (function()
           if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
@@ -309,21 +320,27 @@ require('lazy').setup({
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
         mapping = cmp.mapping.preset.insert {
-          -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
-          -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-p>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item { behavior = 'insert' }
+            else
+              cmp.complete()
+            end
+          end),
+
+          ['<C-n>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_next_item { behavior = 'insert' }
+            else
+              cmp.complete()
+            end
+          end),
 
           -- Scroll the documentation window [b]ack / [f]orward
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
-          -- Accept ([y]es) the completion.
-          --  This will auto-import if your LSP supports it.
-          --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
-
-          ['<C-Space>'] = cmp.mapping.complete {},
 
           ['<C-s>;'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
@@ -344,6 +361,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'git' },
           { name = 'vim-dadbod-completion' },
         },
       }
@@ -351,12 +369,17 @@ require('lazy').setup({
   },
 
   {
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+    'scottmckendry/cyberdream.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('cyberdream').setup {
+        transparent = true,
+      }
+      vim.cmd.colorscheme 'cyberdream'
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
     end,
   },
 
@@ -392,7 +415,7 @@ require('lazy').setup({
     },
   },
 
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
