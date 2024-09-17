@@ -336,7 +336,6 @@ require('lazy').setup({
             end
           end),
 
-          -- Scroll the documentation window [b]ack / [f]orward
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
@@ -369,17 +368,18 @@ require('lazy').setup({
   },
 
   {
-    'scottmckendry/cyberdream.nvim',
-    lazy = false,
-    priority = 1000,
+    'rose-pine/neovim',
+    name = 'rose-pine',
     config = function()
-      require('cyberdream').setup {
-        transparent = true,
+      require('rose-pine').setup {
+        styles = {
+          transparency = true,
+        },
       }
-      vim.cmd.colorscheme 'cyberdream'
-      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+      vim.cmd.colorscheme 'rose-pine-moon'
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
     end,
   },
 
