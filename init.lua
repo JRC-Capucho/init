@@ -183,16 +183,22 @@ require('lazy').setup({
       local servers = {
         cssls = {},
         html = {},
-        dockerls = {},
         jdtls = {},
+        dockerls = {},
         docker_compose_language_service = {},
         eslint = {},
         vtsls = {},
-        intelephense = {},
+        phpactor = {},
         prismals = {},
-        tailwindcss = {},
         bashls = {},
         gopls = {},
+        basedpyright = {},
+        pyright = {},
+
+        tailwindcss = {
+          filetypes_exclude = { 'markdown' },
+          filetypes_include = {},
+        },
 
         lua_ls = {
           settings = {
@@ -211,6 +217,8 @@ require('lazy').setup({
 
       vim.list_extend(ensure_installed, {
         'stylua',
+        'phpcs',
+        'php-cs-fixer',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -258,6 +266,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        php = { 'php_cs_fixer' },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -416,8 +426,8 @@ require('lazy').setup({
   },
 
   require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
