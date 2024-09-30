@@ -55,7 +55,7 @@ require('lazy').setup({
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.cmp',
   require 'kickstart.plugins.conform',
   require 'kickstart.plugins.debug',

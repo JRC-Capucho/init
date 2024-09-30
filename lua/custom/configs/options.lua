@@ -12,10 +12,6 @@ vim.g.have_nerd_font = true
 
 vim.o.showmode = false
 
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
-
 vim.opt.breakindent = true
 
 vim.opt.undofile = true
