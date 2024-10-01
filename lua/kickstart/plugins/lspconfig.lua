@@ -102,6 +102,7 @@ return {
       'stylua',
       'phpcs',
       'php-cs-fixer',
+      'markdownlint',
     })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
