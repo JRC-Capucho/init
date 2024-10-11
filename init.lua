@@ -54,10 +54,9 @@ require('lazy').setup({
   { 'Bilal2453/luvit-meta', lazy = true },
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.cmp',
-  require 'kickstart.plugins.conform',
+  -- require 'kickstart.plugins.conform',
   require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'kickstart.plugins.indent_line',
