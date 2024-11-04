@@ -71,7 +71,7 @@ return {
       docker_compose_language_service = {},
       eslint = {},
       vtsls = {},
-      phpactor = {},
+      intelephense = {},
       prismals = {},
       bashls = {},
       gopls = {},

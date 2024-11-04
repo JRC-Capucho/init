@@ -1,7 +1,3 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
 return {
   {
     'adalessa/laravel.nvim',
@@ -153,4 +149,7 @@ return {
       }
     end,
   },
+  -- { 'wakatime/vim-wakatime', lazy = true },
+  require 'custom.plugins.bufferline',
+  require 'custom.plugins.saga',
 }
