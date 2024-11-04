@@ -91,6 +91,7 @@ return {
 
       window = {
         completion = {
+          scrollbar = false,
           border = 'rounded',
           completeopt = 'menu,menuone,noinsert',
           winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None',

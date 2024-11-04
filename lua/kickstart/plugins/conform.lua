@@ -29,7 +29,7 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      php = { 'php_cs_fixer' },
+      php = { 'pin' },
 
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
