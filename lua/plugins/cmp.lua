@@ -6,18 +6,12 @@ return { -- Autocompletion
     {
       'L3MON4D3/LuaSnip',
       build = (function()
-        -- Build Step is needed for regex support in snippets.
-        -- This step is not supported in many windows environments.
-        -- Remove the below condition to re-enable on windows.
         if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
           return
         end
         return 'make install_jsregexp'
       end)(),
       dependencies = {
-        -- `friendly-snippets` contains a variety of premade snippets.
-        --    See the README about individual language/framework/plugin snippets:
-        --    https://github.com/rafamadriz/friendly-snippets
         -- {
         --   'rafamadriz/friendly-snippets',
         --   config = function()
@@ -26,19 +20,37 @@ return { -- Autocompletion
         -- },
       },
     },
+    'onsails/lspkind.nvim',
     'saadparwaiz1/cmp_luasnip',
-
-    -- Adds other completion capabilities.
-    --  nvim-cmp does not ship with all sources by default. They are split
-    --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'roobert/tailwindcss-colorizer-cmp.nvim',
   },
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
+
+    local lspkind = require 'lspkind'
+
+    local kind_formatter = lspkind.cmp_format {
+      mode = 'symbol_text',
+      menu = {
+        buffer = '[buf]',
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[api]',
+        path = '[path]',
+        luasnip = '[snip]',
+        gh_issues = '[issues]',
+        tn = '[TabNine]',
+        eruby = '[erb]',
+      },
+    }
+
+    require('tailwindcss-colorizer-cmp').setup {
+      color_square_width = 2,
+    }
 
     cmp.setup {
       snippet = {
@@ -54,9 +66,8 @@ return { -- Autocompletion
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
         -- Select the [n]ext item
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        -- Select the [p]revious item
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
 
         -- Scroll the documentation window [b]ack / [f]orward
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
@@ -65,7 +76,13 @@ return { -- Autocompletion
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<C-y>'] = cmp.mapping(
+          cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          },
+          { 'i', 'c' }
+        ),
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
@@ -110,6 +127,27 @@ return { -- Autocompletion
         { name = 'luasnip' },
         { name = 'path' },
       },
+
+      formatting = {
+        fields = { 'abbr', 'kind', 'menu' },
+        expandable_indicator = true,
+        format = function(entry, vim_item)
+          -- Lspkind setup for icons
+          vim_item = kind_formatter(entry, vim_item)
+
+          -- Tailwind colorizer setup
+          vim_item = require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+
+          return vim_item
+        end,
+      },
     }
+
+    cmp.setup.filetype({ 'sql' }, {
+      sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+      },
+    })
   end,
 }

@@ -31,6 +31,7 @@ return {
         },
       },
       extensions = {
+        wrap_results = true,
         ['ui-select'] = {
           require('telescope.themes').get_ivy(),
         },
