@@ -68,4 +68,6 @@ return {
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
   end,
+
+  require('config.multi-ripgrep').setup(),
 }
