@@ -69,13 +69,6 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          vim.keymap.set('n', '<leader>vd', function()
-            vim.diagnostic.open_float()
-          end)
-          vim.keymap.set('i', '<C-h>', function()
-            vim.lsp.buf.signature_help()
-          end)
-
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
@@ -100,6 +93,13 @@ return {
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>vws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+          map('<C-h>', vim.lsp.buf.signature_help, '[S]ignature [H]elp', 'i')
+          -- vim.keymap.map('i', '<C-h>', function()
+          --   vim.lsp.buf.signature_help()
+          -- end)
+
+          map('<leader>vd', vim.diagnostic.open_float, '[O]pen [F]loat')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
