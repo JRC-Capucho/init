@@ -1,13 +1,37 @@
 return {
-
   {
     'nvim-flutter/flutter-tools.nvim',
     lazy = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
+      'stevearc/dressing.nvim',
     },
     config = true,
+    opts = {
+      widget_guides = {
+        enabled = true,
+      },
+      dev_log = {
+        enabled = true,
+        notify_errors = false,
+        open_cmd = '10split',
+        focus_on_open = false,
+      },
+      outline = {
+        open_cmd = '15vnew',
+        auto_open = false,
+      },
+      lsp = {
+        color = { -- show the derived colours for dart variables
+          enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+          background = true, -- highlight the background
+          background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+          foreground = false, -- highlight the foreground
+          virtual_text = true, -- show the highlight using virtual text
+          virtual_text_str = '■', -- the virtual text character to highlight
+        },
+      },
+    },
   },
 
   {
@@ -137,12 +161,6 @@ return {
         },
       }
 
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
-      --  You can press `g?` for help in this menu.
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -153,6 +171,7 @@ return {
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      ---@diagnostic disable-next-line: missing-fields
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
