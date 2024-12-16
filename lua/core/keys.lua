@@ -18,8 +18,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set('n', 'J', 'mzJ`z', opts)
@@ -38,3 +36,10 @@ vim.keymap.set('n', '<Up>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<Down>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize +2<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize -2<CR>', opts)
+
+vim.keymap.set('n', '<leader>t', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 5)
+end)

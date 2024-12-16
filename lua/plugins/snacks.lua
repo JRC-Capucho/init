@@ -32,18 +32,18 @@ return {
   },
   keys = {
     {
-      '<leader>.',
+      '<leader>z',
       function()
-        Snacks.scratch()
+        Snacks.zen()
       end,
-      desc = 'Toggle Scratch Buffer',
+      desc = 'Toggle Zen Mode',
     },
     {
-      '<leader>S',
+      '<leader>Z',
       function()
-        Snacks.scratch.select()
+        Snacks.zen.zoom()
       end,
-      desc = 'Select Scratch Buffer',
+      desc = 'Toggle Zoom',
     },
     {
       '<leader>n',
@@ -102,27 +102,6 @@ return {
       desc = 'Lazygit Log (cwd)',
     },
     {
-      '<leader>un',
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = 'Dismiss All Notifications',
-    },
-    {
-      '<c-/>',
-      function()
-        Snacks.terminal()
-      end,
-      desc = 'Toggle Terminal',
-    },
-    {
-      '<c-_>',
-      function()
-        Snacks.terminal()
-      end,
-      desc = 'which_key_ignore',
-    },
-    {
       ']]',
       function()
         Snacks.words.jump(vim.v.count1)
@@ -137,24 +116,6 @@ return {
       end,
       desc = 'Prev Reference',
       mode = { 'n', 't' },
-    },
-    {
-      '<leader>N',
-      desc = 'Neovim News',
-      function()
-        Snacks.win {
-          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
-          width = 0.6,
-          height = 0.6,
-          wo = {
-            spell = false,
-            wrap = false,
-            signcolumn = 'yes',
-            statuscolumn = ' ',
-            conceallevel = 3,
-          },
-        }
-      end,
     },
   },
 }
