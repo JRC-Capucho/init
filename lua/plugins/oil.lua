@@ -1,7 +1,15 @@
 return {
   {
     'stevearc/oil.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = {
+      {
+        'echasnovski/mini.icons',
+        opts = {},
+      },
+    },
     config = function()
       CustomOilBar = function()
         local path = vim.fn.expand '%'
