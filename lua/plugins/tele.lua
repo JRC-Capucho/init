@@ -68,7 +68,9 @@ return {
     vim.keymap.set('n', '<leader>pn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
-  end,
 
-  require('config.multi-ripgrep').setup(),
+    pcall(function()
+      require('config.multi-ripgrep').setup()
+    end)
+  end,
 }
