@@ -122,7 +122,6 @@ return {
         vtsls = {},
         eslint = {},
         phpactor = {},
-        pest_ls = {},
         gopls = {},
         dockerls = {},
         docker_compose_language_service = {},
