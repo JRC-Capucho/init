@@ -1,5 +1,11 @@
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
+  dependencies = {
+    {
+      'echasnovski/mini.icons',
+      opts = {},
+    },
+  },
   config = function()
     -- Better Around/Inside textobjects
     --
@@ -35,5 +41,7 @@ return { -- Collection of various small independent plugins/modules
     --  Check out: https://github.com/echasnovski/mini.nvim
     require('mini.git').setup {}
     require('mini.tabline').setup {}
+    require('mini.files').setup {}
+    vim.keymap.set('n', '-', require('mini.files').open)
   end,
 }
