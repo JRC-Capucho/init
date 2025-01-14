@@ -60,7 +60,12 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = {
+  tab = '| ',
+  eol = '¬',
+  trail = '·',
+}
+
 vim.opt.fillchars = { eob = ' ' }
 
 -- Preview substitutions live, as you type!
@@ -76,3 +81,5 @@ vim.opt.wrap = false
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
