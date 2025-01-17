@@ -32,6 +32,11 @@ vim.keymap.set('n', '<C-k>', '<cmd>cprev<CR>zz', opts)
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', opts)
 
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], opts)
+vim.keymap.set('x', '<leader>p', [["_dP]], opts)
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], opts)
+vim.keymap.set('n', '<leader>Y', [["+Y]], opts)
+
 vim.keymap.set('n', '<Up>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<Down>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize +2<CR>', opts)
