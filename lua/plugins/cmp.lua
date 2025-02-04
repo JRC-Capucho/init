@@ -1,8 +1,25 @@
 return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
-  dependencies = { 'rafamadriz/friendly-snippets' },
-
+  dependencies = {
+    'Kaiser-Yang/blink-cmp-git',
+    'rafamadriz/friendly-snippets',
+    'fang2hou/blink-copilot',
+    {
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      build = ':Copilot auth',
+      event = 'InsertEnter',
+      opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        filetypes = {
+          markdown = true,
+          help = true,
+        },
+      },
+    },
+  },
   version = '*',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -17,12 +34,31 @@ return {
     appearance = {
       use_nvim_cmp_as_default = true,
       nerd_font_variant = 'mono',
+      kind_icons = {
+        Copilot = ' ',
+        Git = '󰊤 ',
+      },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot', 'git' },
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', score_offset = 100 },
+        copilot = {
+          name = 'copilot',
+          module = 'blink-copilot',
+          score_offset = 100,
+          async = true,
+          opts = {
+            max_completions = 3,
+            max_attempts = 4,
+          },
+        },
+        git = {
+          module = 'blink-cmp-git',
+          name = 'Git',
+          opts = {},
+        },
       },
     },
     completion = {
@@ -36,7 +72,6 @@ return {
         },
       },
     },
-
     signature = { enabled = true },
   },
 }
