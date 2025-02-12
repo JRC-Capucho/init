@@ -123,6 +123,7 @@ return {
         tailwindcss = {},
         eslint = {},
         phpactor = {},
+        prismals = {},
         gopls = {},
         dockerls = {},
         docker_compose_language_service = {},

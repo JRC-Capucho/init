@@ -36,11 +36,10 @@ return {
       nerd_font_variant = 'mono',
       kind_icons = {
         Copilot = ' ',
-        Git = '󰊤 ',
       },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot', 'git' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', score_offset = 100 },
@@ -53,11 +52,6 @@ return {
             max_completions = 3,
             max_attempts = 4,
           },
-        },
-        git = {
-          module = 'blink-cmp-git',
-          name = 'Git',
-          opts = {},
         },
       },
     },
