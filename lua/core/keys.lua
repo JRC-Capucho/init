@@ -30,7 +30,6 @@ vim.keymap.set('n', '<Down>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize +2<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize -2<CR>', opts)
 
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
 vim.keymap.set('n', '<leader><leader>', function()
   vim.cmd 'so'
 end)

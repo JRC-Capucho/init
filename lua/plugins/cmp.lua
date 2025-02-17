@@ -26,9 +26,6 @@ return {
   opts = {
     keymap = {
       preset = 'default',
-      cmdline = {
-        preset = 'default',
-      },
     },
 
     appearance = {
