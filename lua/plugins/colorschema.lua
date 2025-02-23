@@ -1,4 +1,22 @@
 -- return {
+--   'scottmckendry/cyberdream.nvim',
+--   lazy = false,
+--   priority = 1000,
+--   init = function()
+--     vim.cmd [[colorscheme cyberdream]]
+--   end,
+-- }
+
+-- return {
+--   lazy = false,
+--   priority = 1000,
+--   opts = {},
+--   init = function()
+--     vim.cmd [[colorscheme nekonight]]
+--   end,
+-- }
+
+-- return {
 --   'olivercederborg/poimandres.nvim',
 --   lazy = false,
 --   priority = 1000,
@@ -9,13 +27,13 @@
 --   end,
 -- }
 
-return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  config = function()
-    vim.cmd 'colorscheme rose-pine'
-  end,
-}
+-- return {
+--   'rose-pine/neovim',
+--   name = 'rose-pine',
+--   config = function()
+--     vim.cmd 'colorscheme rose-pine'
+--   end,
+-- }
 --
 --
 
@@ -31,11 +49,11 @@ return {
 --   end,
 -- }
 
--- return {
---   'catppuccin/nvim',
---   name = 'catppuccin',
---   priority = 1000,
---   config = function()
---     vim.cmd.colorscheme 'catppuccin-mocha'
---   end,
--- }
+return {
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme 'catppuccin-mocha'
+  end,
+}

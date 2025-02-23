@@ -122,6 +122,7 @@ return {
         vtsls = {},
         tailwindcss = {},
         eslint = {},
+        phpactor = {},
         intelephense = {},
         prismals = {},
         gopls = {},
