@@ -45,9 +45,10 @@ vim.api.nvim_set_hl(0, 'NotifyTRACEBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NotifyDEBUGBorder', { bg = 'none' })
 
 -- -- set line number colors
--- vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#737373", bold = false })
--- vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff", bold = true })
+-- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#737373', bold = false })
+-- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#ffffff', bold = true })
 -- vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#737373", bold = false })
+-- vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = 'black', fg = 'none', bold = true })
 
 -- -- dashboard stuff
 -- vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#5eead4" }) -- logo

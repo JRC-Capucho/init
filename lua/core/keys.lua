@@ -3,7 +3,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
---
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", opts)

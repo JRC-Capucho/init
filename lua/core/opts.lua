@@ -26,6 +26,7 @@ vim.opt.fillchars = { eob = ' ' }
 vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
 
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
