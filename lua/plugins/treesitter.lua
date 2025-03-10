@@ -4,7 +4,30 @@ return { -- Highlight, edit, and navigate code
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
   opts = {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'blade' },
+    ensure_installed = {
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      'blade',
+      'regex',
+      'css',
+      'javascript',
+      'norg',
+      'scss',
+      'svelte',
+      'tsx',
+      'typst',
+      'vue',
+    },
+
     auto_install = true,
     highlight = {
       enable = true,
@@ -17,22 +40,4 @@ return { -- Highlight, edit, and navigate code
       },
     },
   },
-  init = function()
-    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-    parser_config.blade = {
-      install_info = {
-        url = 'https://github.com/EmranMR/tree-sitter-blade',
-        files = { 'src/parser.c' },
-        branch = 'main',
-      },
-      filetype = 'blade',
-    }
-
-    vim.filetype.add {
-      pattern = {
-        ['.*%.blade%.php'] = 'blade',
-      },
-    }
-    vim.treesitter.language.register('blade', 'blade')
-  end,
 }

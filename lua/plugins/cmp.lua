@@ -36,31 +36,16 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev' },
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', score_offset = 100 },
-        copilot = {
-          name = 'copilot',
-          module = 'blink-copilot',
-          score_offset = 100,
-          async = true,
-          opts = {
-            max_completions = 3,
-            max_attempts = 4,
-          },
-        },
       },
     },
     completion = {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 50,
-      },
-      accept = {
-        auto_brackets = {
-          enabled = true,
-        },
       },
     },
     signature = { enabled = true },

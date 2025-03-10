@@ -42,7 +42,5 @@ return { -- Collection of various small independent plugins/modules
     --  Check out: https://github.com/echasnovski/mini.nvim
     require('mini.git').setup {}
     require('mini.tabline').setup {}
-    require('mini.animate').setup {}
-    require('mini.pairs').setup {}
   end,
 }
