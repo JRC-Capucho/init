@@ -26,6 +26,7 @@ return { -- Highlight, edit, and navigate code
       'tsx',
       'typst',
       'vue',
+      'json5',
     },
 
     auto_install = true,

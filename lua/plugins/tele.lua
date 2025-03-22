@@ -4,6 +4,7 @@ return {
   event = 'VimEnter',
   branch = '0.1.x',
   dependencies = {
+    'piersolenski/telescope-import.nvim',
     'nvim-lua/plenary.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -25,15 +26,15 @@ return {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
       --   },
       -- },
-      pickers = {
-        find_files = {
-          theme = 'ivy',
-        },
-      },
+      -- pickers = {
+      --   find_files = {
+      --     theme = 'dropdown',
+      --   },
+      -- },
       extensions = {
         wrap_results = true,
         ['ui-select'] = {
-          require('telescope.themes').get_ivy(),
+          require('telescope.themes').get_cursor(),
         },
         fzf = {},
       },
@@ -42,6 +43,7 @@ return {
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'import')
     pcall(require('telescope').load_extension 'flutter')
 
     -- See `:help telescope.builtin`
@@ -68,6 +70,8 @@ return {
     vim.keymap.set('n', '<leader>pn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
+
+    vim.keymap.set('n', '<leader>pi', ':Telescope import<CR>', { desc = '[F]lutter [T]ools Commands' })
 
     pcall(function()
       require('config.multi-ripgrep').setup()
