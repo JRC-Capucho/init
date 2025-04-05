@@ -127,12 +127,12 @@ return {
         -- clangd = {},
         tailwindcss = {},
         biome = {},
-        intelephense = {},
+        -- intelephense = {},
         prismals = {},
-        gopls = {},
+        -- gopls = {},
         dockerls = {},
         docker_compose_language_service = {},
-        pyright = {},
+        -- pyright = {},
         marksman = {},
 
         lua_ls = {
@@ -211,8 +211,8 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'pint',
-        'phpstan',
+        -- 'pint',
+        -- 'phpstan',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

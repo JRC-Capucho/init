@@ -124,44 +124,48 @@ return {
       -- Copilot Chat Agents
       { '<leader>aa', '<cmd>CopilotChatAgents<cr>', desc = 'CopilotChat - Select Agents' },
     },
-    opts = {
-      question_header = '## User ',
-      answer_header = '## Copilot ',
-      error_header = '## Error ',
-      prompts = prompts,
-      model = 'claude-3.7-sonnet',
-      mappings = {
-        -- Use tab for completion
-        complete = {
-          detail = 'Use @<Tab> or /<Tab> for options.',
-          insert = '<Tab>',
+    opts = function()
+      local user = vim.env.USER or 'User'
+      user = user:sub(1, 1):upper() .. user:sub(2)
+      return {
+        question_header = '  ' .. user .. ' ',
+        answer_header = '  Copilot ',
+        error_header = '## Error ',
+        prompts = prompts,
+        model = 'claude-3.7-sonnet',
+        mappings = {
+          -- Use tab for completion
+          complete = {
+            detail = 'Use @<Tab> or /<Tab> for options.',
+            insert = '<Tab>',
+          },
+          -- Close the chat
+          close = {
+            normal = 'q',
+            insert = '<C-c>',
+          },
+          -- Reset the chat buffer
+          reset = {
+            normal = '<C-x>',
+            insert = '<C-x>',
+          },
+          -- Submit the prompt to Copilot
+          submit_prompt = {
+            normal = '<CR>',
+            insert = '<C-CR>',
+          },
+          -- Accept the diff
+          accept_diff = {
+            normal = '<C-y>',
+            insert = '<C-y>',
+          },
+          -- Show help
+          show_help = {
+            normal = 'g?',
+          },
         },
-        -- Close the chat
-        close = {
-          normal = 'q',
-          insert = '<C-c>',
-        },
-        -- Reset the chat buffer
-        reset = {
-          normal = '<C-x>',
-          insert = '<C-x>',
-        },
-        -- Submit the prompt to Copilot
-        submit_prompt = {
-          normal = '<CR>',
-          insert = '<C-CR>',
-        },
-        -- Accept the diff
-        accept_diff = {
-          normal = '<C-y>',
-          insert = '<C-y>',
-        },
-        -- Show help
-        show_help = {
-          normal = 'g?',
-        },
-      },
-    },
+      }
+    end,
     config = function(_, opts)
       local chat = require 'CopilotChat'
       chat.setup(opts)
