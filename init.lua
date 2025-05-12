@@ -1,5 +1,12 @@
-require 'core.opts'
-require 'core.keys'
-require 'core.cmds'
+local load = function(mod)
+  package.loaded[mod] = nil
+  require(mod)
+end
+
+load 'core.opts'
+load 'core.keys'
+load 'core.cmds'
 require 'config.lazy'
-require 'core.transparency'
+
+pcall(vim.cmd.colorscheme, 'tokyonight')
+load 'core.transparency'
