@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.o.confirm = true
+
 vim.g.have_nerd_font = true
 
 vim.opt.mouse = 'a'
@@ -59,7 +61,7 @@ vim.opt.scrolloff = 8
 
 vim.opt.isfname:append '@-@'
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 vim.opt.colorcolumn = '80'
 

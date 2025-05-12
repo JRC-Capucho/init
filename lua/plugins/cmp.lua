@@ -1,6 +1,8 @@
 return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
+  version = '1.*',
+  event = 'VimEnter',
   dependencies = {
     'Kaiser-Yang/blink-cmp-git',
     'rafamadriz/friendly-snippets',
@@ -20,7 +22,6 @@ return {
       },
     },
   },
-  version = '*',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
@@ -48,6 +49,9 @@ return {
         auto_show_delay_ms = 50,
       },
     },
+
+    fuzzy = { implementation = 'lua' },
+
     signature = { enabled = true },
   },
 }
