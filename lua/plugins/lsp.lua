@@ -150,7 +150,16 @@ return {
       local servers = {
         -- clangd = {},
         tailwindcss = {},
-        biome = {},
+        biome = {
+          settings = {
+            organizeImportsOnSave = true,
+            updateImportsOnFileMove = true,
+            lsp = {
+              organizeImportsOnSave = true,
+              formatOnSave = true,
+            },
+          },
+        },
         -- intelephense = {},
         prismals = {},
         -- gopls = {},
@@ -231,6 +240,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        -- 'markdownlint',
         -- 'pint',
         -- 'phpstan',
       })

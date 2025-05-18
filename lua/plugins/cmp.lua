@@ -5,7 +5,7 @@ return {
   event = 'VimEnter',
   dependencies = {
     'Kaiser-Yang/blink-cmp-git',
-    'rafamadriz/friendly-snippets',
+    -- 'rafamadriz/friendly-snippets',
     'fang2hou/blink-copilot',
     {
       'zbirenbaum/copilot.lua',
@@ -37,7 +37,15 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev' },
+      default = {
+        'lsp',
+        'path',
+        'buffer',
+        'dadbod',
+        'lazydev',
+        -- 'snippets',
+      },
+
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', score_offset = 100 },
