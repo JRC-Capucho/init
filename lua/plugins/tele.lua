@@ -44,7 +44,6 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'import')
-    pcall(require('telescope').load_extension 'flutter')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -63,10 +62,6 @@ return {
     end)
     vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     vim.keymap.set('n', '<leader>pt', builtin.treesitter, {})
-    vim.keymap.set('n', '<leader>pc', function()
-      require('telescope').extensions.flutter.commands()
-    end, { desc = '[F]lutter [T]ools Commands' })
-
     vim.keymap.set('n', '<leader>pn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })

@@ -1,5 +1,5 @@
 return {
-  'NMAC427/guess-indent.nvim',
+  { 'NMAC427/guess-indent.nvim', opts = {} },
 
   'tpope/vim-dadbod',
   'kristijanhusak/vim-dadbod-completion',
@@ -7,7 +7,7 @@ return {
 
   'tjdevries/php.nvim',
 
-  require 'kickstart.plugins.debug',
+  -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
