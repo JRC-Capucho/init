@@ -8,4 +8,5 @@ return {
   { 'lunarvim/darkplus.nvim' },
   { 'oxfist/night-owl.nvim' },
   { 'aliqyan-21/darkvoid.nvim' },
+  { 'craftzdog/solarized-osaka.nvim' },
 }
