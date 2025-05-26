@@ -119,6 +119,7 @@ return {
         tailwindcss = {},
         biome = {},
         vtsls = {},
+        -- eslint = {},
         dockerls = {},
         docker_compose_language_service = {},
         marksman = {},
@@ -160,6 +161,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        -- 'prettier',
         -- 'markdownlint',
         -- 'pint',
         -- 'phpstan',

@@ -31,16 +31,19 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascript = { 'biome' },
       typescript = { 'biome' },
       javascriptreact = { 'biome' },
       typescriptreact = { 'biome' },
+      -- javascript = { 'biome', 'prettierd' },
+      -- typescript = { 'biome', 'prettierd' },
+      -- javascriptreact = { 'biome', 'prettierd' },
+      -- typescriptreact = { 'biome', 'prettierd' },
       -- php = { 'pint' },
       -- blade = { 'blade-formatter' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
-      -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      -- javascript = { 'prettierd', 'prettierd', stop_after_first = true },
       -- typescript = { 'prettier' },
     },
   },
