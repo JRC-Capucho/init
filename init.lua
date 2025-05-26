@@ -8,5 +8,5 @@ load 'core.keys'
 load 'core.cmds'
 require 'config.lazy'
 
-pcall(vim.cmd.colorscheme, 'tokyonight')
+pcall(vim.cmd.colorscheme, 'solarized-osaka')
 load 'core.transparency'
