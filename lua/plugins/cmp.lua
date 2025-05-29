@@ -43,12 +43,14 @@ return {
         'buffer',
         'dadbod',
         'lazydev',
+        'copilot',
         -- 'snippets',
       },
 
       providers = {
         dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', score_offset = 100 },
+        copilot = { name = 'copilot', module = 'blink-copilot', score_offset = 100, async = true },
       },
     },
     completion = {
