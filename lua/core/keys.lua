@@ -28,6 +28,9 @@ vim.keymap.set('n', '<Down>', ':resize -2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize +2<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize -2<CR>', opts)
 
+vim.keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+vim.keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+
 vim.keymap.set('n', '<leader><leader>', function()
   vim.cmd 'so'
 end)
@@ -36,5 +39,5 @@ vim.keymap.set('n', '<leader>t', function()
   vim.cmd.vnew()
   vim.cmd.term()
   vim.cmd.wincmd 'J'
-  vim.api.nvim_win_set_height(0, 5)
+  vim.api.nvim_win_set_height(0, 10)
 end)

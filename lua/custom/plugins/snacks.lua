@@ -1,28 +1,47 @@
 return {
   'folke/snacks.nvim',
   opts = {
-    explorer = { enabled = true },
-    terminal = { enabled = true },
+    gitbrowse = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
-      '<leader>e',
+      '<leader>gB',
       function()
-        Snacks.explorer()
+        Snacks.gitbrowse()
       end,
-      desc = 'File Explorer',
+      desc = 'Git Browse',
+      mode = { 'n', 'v' },
     },
     {
-      '<leader>E',
+      ']]',
       function()
-        Snacks.explorer { cwd = vim.fn.expand '%:p:h' }
+        Snacks.words.jump(vim.v.count1)
       end,
+      desc = 'Next Reference',
+      mode = { 'n', 't' },
     },
     {
-      '<leader>t',
+      '[[',
       function()
-        Snacks.terminal()
+        Snacks.words.jump(-vim.v.count1)
       end,
+      desc = 'Prev Reference',
+      mode = { 'n', 't' },
+    },
+    {
+      '<leader>bd',
+      function()
+        Snacks.bufdelete()
+      end,
+      { desc = 'Delete Buffer' },
+      {
+        '<leader>bo',
+        function()
+          Snacks.bufdelete.other()
+        end,
+        { desc = 'Delete Other Buffers' },
+      },
     },
   },
 }
