@@ -1,10 +1,26 @@
 return {
   'folke/snacks.nvim',
+  priority = 1000,
+  lazy = false,
+  ---@type snacks.Config
   opts = {
-    gitbrowse = { enabled = true },
     words = { enabled = true },
   },
   keys = {
+    {
+      '<leader>bd',
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = 'Delete Buffer',
+    },
+    {
+      '<leader>bo',
+      function()
+        Snacks.bufdelete.other()
+      end,
+      desc = 'Delete Other Buffer',
+    },
     {
       '<leader>gB',
       function()
@@ -28,20 +44,6 @@ return {
       end,
       desc = 'Prev Reference',
       mode = { 'n', 't' },
-    },
-    {
-      '<leader>bd',
-      function()
-        Snacks.bufdelete()
-      end,
-      { desc = 'Delete Buffer' },
-      {
-        '<leader>bo',
-        function()
-          Snacks.bufdelete.other()
-        end,
-        { desc = 'Delete Other Buffers' },
-      },
     },
   },
 }
