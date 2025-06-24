@@ -30,6 +30,8 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
+      typescript = { 'biome', 'prettierd', stop_after_first = true },
+      javascript = { 'biome', 'prettierd', stop_after_first = true },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --

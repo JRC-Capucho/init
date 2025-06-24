@@ -26,9 +26,23 @@ return { -- Autocompletion
         --     require('luasnip.loaders.from_vscode').lazy_load()
         --   end,
         -- },
+        {
+          'zbirenbaum/copilot.lua',
+          cmd = 'Copilot',
+          event = 'InsertEnter',
+          opts = {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+            filetypes = {
+              markdown = true,
+              help = true,
+            },
+          },
+        },
       },
       opts = {},
     },
+    'fang2hou/blink-copilot',
     'folke/lazydev.nvim',
   },
   --- @module 'blink.cmp'
@@ -75,9 +89,10 @@ return { -- Autocompletion
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev' },
+      default = { 'lsp', 'path', 'snippets', 'lazydev', 'copilot' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+        copilot = { name = 'copilot', module = 'blink-copilot', score_offset = 100, async = true },
       },
     },
 
