@@ -30,8 +30,34 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      typescript = { 'biome', 'prettierd', stop_after_first = true },
-      javascript = { 'biome', 'prettierd', stop_after_first = true },
+      typescript = function(bufnr)
+        if require('conform').get_formatter_info('biome', bufnr).available then
+          return { 'biome' }
+        else
+          return { 'prettierd' }
+        end
+      end,
+      javascript = function(bufnr)
+        if require('conform').get_formatter_info('biome', bufnr).available then
+          return { 'biome' }
+        else
+          return { 'prettierd' }
+        end
+      end,
+      typescriptreact = function(bufnr)
+        if require('conform').get_formatter_info('biome', bufnr).available then
+          return { 'biome' }
+        else
+          return { 'prettierd' }
+        end
+      end,
+      javascriptreact = function(bufnr)
+        if require('conform').get_formatter_info('biome', bufnr).available then
+          return { 'biome' }
+        else
+          return { 'prettierd' }
+        end
+      end,
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --

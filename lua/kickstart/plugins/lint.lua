@@ -5,11 +5,29 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        typescript = { 'biomejs', 'eslint_d', stop_after_first = true },
-        javascript = { 'biomejs', 'eslint_d', stop_after_first = true },
+        -- typescript = { 'biomejs' },
+        -- javascript = { 'biomejs' },
+        -- typescriptreact = { 'biomejs' },
+        -- javascriptreact = { 'biomejs' },
         -- markdown =
         -- { 'markdownlint' },
       }
+
+      local has_biome = vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json') == 1
+      local has_eslint = vim.fn.filereadable(vim.fn.getcwd() .. '/.eslintrc.js') == 1
+        or vim.fn.filereadable(vim.fn.getcwd() .. '/.eslintrc.json') == 1
+        or vim.fn.filereadable(vim.fn.getcwd() .. '/.eslintrc.yml') == 1
+
+      if has_biome then
+        lint.linters_by_ft.typescript = { 'biomejs' }
+        lint.linters_by_ft.javascript = { 'biomejs' }
+      elseif has_eslint then
+        lint.linters_by_ft.typescript = { 'eslint' }
+        lint.linters_by_ft.javascript = { 'eslint' }
+      else
+        lint.linters_by_ft.typescript = { 'biomejs' }
+        lint.linters_by_ft.javascript = { 'biomejs' }
+      end
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
